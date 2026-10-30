@@ -21,8 +21,9 @@ export const business = {
     pin: "",
   },
   geo: { lat: 10.1055927, lng: 78.7052155 },
-  mapsUrl:
-    "https://www.google.com/maps/place//@10.1055927,78.7026406,936m/data=!3m1!1e3!4m6!1m5!3m4!2zMTDCsDA2JzIwLjEiTiA3OMKwNDInMTguOCJF!8m2!3d10.1055927!4d78.7052155?hl=en&entry=ttu&g_ep=EgoyMDI2MTAyNy4wIKXMDSoASAFQAw%3D%3D",
+  // Google's cross-platform Maps link: opens the Maps app on phones and a pin
+  // in the browser on desktop. (Copied browser links can fail in the app.)
+  mapsUrl: "https://www.google.com/maps/search/?api=1&query=10.1055927%2C78.7052155",
   mapsEmbedUrl: "https://maps.google.com/maps?q=10.1055927,78.7052155&z=15&output=embed",
   landmarks: [] as Text[], // e.g. { en: "Opposite the bus stand", ta: "பேருந்து நிலையம் எதிரில்" }
   // Road distance from the venue. null = not confirmed yet.
