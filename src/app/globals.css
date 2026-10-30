@@ -1,26 +1,75 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@theme {
+  /* Warm black: hero and footer */
+  --color-ink-950: #0e0b07;
+  --color-ink-900: #1a140c;
+  --color-ink-800: #2a2116;
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+  /* Gold. Use gold-700 for gold text on light backgrounds. */
+  --color-gold-200: #f1e3b5;
+  --color-gold-300: #e6cf87;
+  --color-gold-400: #d4af37;
+  --color-gold-500: #b8932c;
+  --color-gold-700: #8f7020;
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  /* Alternatives from the colour guide, not used yet */
+  --color-ivory-50: #fbf7ee;
+  --color-ivory-100: #f3ebdd;
+  --color-maroon-800: #5a1a1f;
+  --color-maroon-700: #7a2230;
+
+  /* Tamil fonts are only loaded on /ta pages; Latin text keeps Geist/Playfair. */
+  --font-sans: var(--font-geist-sans), var(--font-tamil-sans, ui-sans-serif), system-ui, sans-serif;
+  --font-display: var(--font-playfair), var(--font-tamil-serif, Georgia), serif;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--color-ink-950);
+  color: var(--color-gold-200);
+}
+
+/* Letter spacing splits Tamil letters from their vowel signs. */
+html[lang="ta"] [class*="tracking-"] {
+  letter-spacing: normal;
+}
+
+/*
+ * Hero slideshow: three photos, 7s each, so one cycle is 21s. Each photo
+ * fades in over 1.5s, holds, fades out while the next fades in, and zooms
+ * slowly while visible. Delays are set inline per photo.
+ */
+.hero-slide {
+  opacity: 0;
+  animation: hero-slide 21s linear infinite both;
+}
+
+@keyframes hero-slide {
+  0% {
+    opacity: 0;
+    transform: scale(1);
+  }
+  7% {
+    opacity: 1;
+  }
+  33.3% {
+    opacity: 1;
+  }
+  40.5% {
+    opacity: 0;
+    transform: scale(1.12);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.12);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-slide {
+    animation: none;
+  }
+  .hero-slide:first-child {
+    opacity: 1;
+  }
 }
