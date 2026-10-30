@@ -9,7 +9,7 @@ import WhatsAppFloat from "@/components/WhatsAppFloat";
 import { business, fullAddress } from "@/content/business";
 import { dict } from "@/lib/dictionary";
 import { localePath, tx, type Locale } from "@/lib/i18n";
-import { telHref } from "@/lib/site";
+import { gaId, telHref } from "@/lib/site";
 import "@/app/globals.css";
 
 const geistSans = Geist({
@@ -153,7 +153,7 @@ export default function SiteShell({
               <Link href={localePath(lang, "/privacy")} className="hover:text-gold-300">
                 {t.nav.privacy}
               </Link>
-              <CookieSettingsButton label={t.nav.cookieSettings} />
+              {gaId && <CookieSettingsButton label={t.nav.cookieSettings} />}
             </div>
           </div>
           <div className="border-t border-gold-500/10">
@@ -165,7 +165,8 @@ export default function SiteShell({
         </footer>
 
         <WhatsAppFloat lang={lang} />
-        <ConsentBanner lang={lang} />
+        {/* Only needed once Google Analytics is set up (NEXT_PUBLIC_GA_ID). */}
+        {gaId && <ConsentBanner lang={lang} />}
       </body>
     </html>
   );

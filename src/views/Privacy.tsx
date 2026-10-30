@@ -4,6 +4,7 @@ import { Missing } from "@/components/ui";
 import { business } from "@/content/business";
 import { dict } from "@/lib/dictionary";
 import { tx, type Locale } from "@/lib/i18n";
+import { gaId } from "@/lib/site";
 
 export function privacyMetadata(lang: Locale): Metadata {
   return {
@@ -57,8 +58,12 @@ export default function Privacy({ lang }: { lang: Locale }) {
         <section>
           <h2>{p.rightsTitle}</h2>
           <p>
-            {p.rights1} <CookieSettingsButton label={t.nav.cookieSettings} />
-            {p.rights2}
+            {gaId && (
+              <>
+                {p.rights1} <CookieSettingsButton label={t.nav.cookieSettings} />
+              </>
+            )}
+            {gaId ? p.rights2 : p.rights2.replace(/^\.\s*/, "")}
           </p>
         </section>
       </div>
