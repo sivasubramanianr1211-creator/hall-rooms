@@ -32,7 +32,7 @@ export const gallery: { id: string; title: Text; photos: Photo[] }[] = [
 
 export const video = {
   youtubeId: "", // the part after watch?v= in a YouTube link
-  title: { en: "Walkthrough of Raja Valamburi Hall & Rooms", ta: "ராஜா வலம்புரி மண்டபம் & அறைகள் — சுற்றுப்பார்வை" } as Text,
+  title: { en: "Walkthrough of Raja Valampuri Hall & Rooms", ta: "ராஜா வலம்புரி மண்டபம் & அறைகள் — சுற்றுப்பார்வை" } as Text,
 };
 
 export const about = {

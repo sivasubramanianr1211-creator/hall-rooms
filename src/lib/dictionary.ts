@@ -8,6 +8,21 @@ const en = {
     description:
       "Marriage hall and guest rooms near Kundrakudi, Pillayarpatti and Karaikudi. Weddings, receptions and family functions, with rooms for your guests.",
   },
+  // Search titles and descriptions: written around what people type into
+  // Google ("rooms in Kundrakudi", "lodge near Pillayarpatti", "marriage hall Karaikudi").
+  seo: {
+    suffix: "Raja Valampuri Hall & Rooms, Kundrakudi",
+    homeTitle: "Raja Valampuri – Rooms & Marriage Hall in Kundrakudi, near Karaikudi",
+    homeDescription:
+      "Hotel rooms and a marriage hall in Kundrakudi: 1.8 km from Kundrakudi Murugan temple, 4 km from Pillayarpatti and 7 km from Karaikudi. Stay for temple visits, weddings and family functions. Call or WhatsApp to book.",
+    roomsTitle: "Rooms & Lodge in Kundrakudi near Pillayarpatti, Karaikudi | Raja Valampuri",
+    roomsDescription:
+      "Comfortable hotel rooms in Kundrakudi, close to Kundrakudi Murugan temple and Pillayarpatti Karpaga Vinayagar temple, 7 km from Karaikudi. Room types, tariff and check-in times.",
+    hallTitle: "Marriage Hall in Kundrakudi near Karaikudi | Raja Valampuri",
+    hallDescription:
+      "Marriage hall in Kundrakudi for weddings, receptions, engagements and family functions, with guest rooms on site. 4 km from Pillayarpatti, 7 km from Karaikudi.",
+    contactTitle: "Contact & Directions | Raja Valampuri, Kundrakudi",
+  },
   nav: {
     hall: "Hall",
     rooms: "Rooms",
@@ -60,6 +75,9 @@ const en = {
     roomsTariff: "Rooms & tariff",
     fullGallery: "Full gallery",
     easyToReach: "Easy to reach",
+    nearTitle: "Stay near Kundrakudi, Pillayarpatti & Karaikudi",
+    nearBody:
+      "Raja Valampuri Hall & Rooms is in Kundrakudi, Sivaganga district, a short drive from the Kundrakudi Murugan temple, the Pillayarpatti Karpaga Vinayagar temple and Karaikudi town. A convenient base for temple visits, Chettinad trips and family functions.",
     planTitle: "Plan your event with us",
     planBody: "Tell us your date and guest count, and we will show you the hall and rooms.",
   },
@@ -213,6 +231,19 @@ const ta: Dictionary = {
     description:
       "குன்றக்குடி, பிள்ளையார்பட்டி, காரைக்குடி அருகே திருமண மண்டபம் மற்றும் தங்கும் அறைகள். திருமணம், வரவேற்பு, குடும்ப விழாக்கள் — விருந்தினர்களுக்கு இங்கேயே அறைகளுடன்.",
   },
+  seo: {
+    suffix: "ராஜா வலம்புரி மண்டபம் & அறைகள், குன்றக்குடி",
+    homeTitle: "ராஜா வலம்புரி – குன்றக்குடியில் தங்கும் அறைகள் & திருமண மண்டபம்",
+    homeDescription:
+      "குன்றக்குடியில் தங்கும் அறைகள் மற்றும் திருமண மண்டபம்: குன்றக்குடி முருகன் கோயிலிலிருந்து 1.8 கி.மீ, பிள்ளையார்பட்டியிலிருந்து 4 கி.மீ, காரைக்குடியிலிருந்து 7 கி.மீ. கோயில் தரிசனம், திருமணம், குடும்ப விழாக்களுக்கு ஏற்ற இடம். முன்பதிவுக்கு அழைக்கவும் அல்லது WhatsApp செய்யவும்.",
+    roomsTitle: "குன்றக்குடியில் தங்கும் அறைகள் – பிள்ளையார்பட்டி, காரைக்குடி அருகே | ராஜா வலம்புரி",
+    roomsDescription:
+      "குன்றக்குடி முருகன் கோயில் மற்றும் பிள்ளையார்பட்டி கற்பக விநாயகர் கோயில் அருகே, காரைக்குடியிலிருந்து 7 கி.மீ தொலைவில் வசதியான தங்கும் அறைகள். அறை வகைகள், கட்டணம், செக்-இன் நேரம்.",
+    hallTitle: "குன்றக்குடியில் திருமண மண்டபம் – காரைக்குடி அருகே | ராஜா வலம்புரி",
+    hallDescription:
+      "திருமணம், வரவேற்பு, நிச்சயதார்த்தம் மற்றும் குடும்ப விழாக்களுக்கு குன்றக்குடியில் திருமண மண்டபம் — விருந்தினர்களுக்கு இங்கேயே தங்கும் அறைகள். பிள்ளையார்பட்டியிலிருந்து 4 கி.மீ, காரைக்குடியிலிருந்து 7 கி.மீ.",
+    contactTitle: "தொடர்பு & வழி | ராஜா வலம்புரி, குன்றக்குடி",
+  },
   nav: {
     hall: "மண்டபம்",
     rooms: "அறைகள்",
@@ -267,6 +298,9 @@ const ta: Dictionary = {
     roomsTariff: "அறைகள் & கட்டணம்",
     fullGallery: "அனைத்து புகைப்படங்கள்",
     easyToReach: "எளிதில் வந்தடையலாம்",
+    nearTitle: "குன்றக்குடி, பிள்ளையார்பட்டி, காரைக்குடி அருகே தங்குங்கள்",
+    nearBody:
+      "ராஜா வலம்புரி மண்டபம் & அறைகள் சிவகங்கை மாவட்டம், குன்றக்குடியில் அமைந்துள்ளது — குன்றக்குடி முருகன் கோயில், பிள்ளையார்பட்டி கற்பக விநாயகர் கோயில் மற்றும் காரைக்குடி நகரத்திற்கு அருகில். கோயில் தரிசனம், செட்டிநாடு சுற்றுலா மற்றும் குடும்ப விழாக்களுக்கு வசதியான இடம்.",
     planTitle: "உங்கள் விழாவை எங்களுடன் திட்டமிடுங்கள்",
     planBody: "உங்கள் தேதி மற்றும் விருந்தினர் எண்ணிக்கையைச் சொல்லுங்கள்; மண்டபத்தையும் அறைகளையும் நேரில் காட்டுகிறோம்.",
   },

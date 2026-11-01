@@ -13,19 +13,15 @@ import {
   Section,
   showMissing,
 } from "@/components/ui";
-import { business } from "@/content/business";
 import { eventParking, eventTypes, halls, packages, payment, slots, vendors } from "@/content/hall";
 import { dict } from "@/lib/dictionary";
 import { tx, type Locale } from "@/lib/i18n";
+import { pageMetadata } from "@/lib/seo";
 import { inr } from "@/lib/site";
 
 export function hallMetadata(lang: Locale): Metadata {
-  const t = dict(lang).hall;
-  return {
-    title: `${t.metaTitle} | ${tx(business.fullName, lang)}`,
-    description: t.metaDescription,
-    alternates: { languages: { en: "/hall", ta: "/ta/hall" } },
-  };
+  const d = dict(lang);
+  return pageMetadata(lang, "/hall", d.seo.hallTitle, d.seo.hallDescription);
 }
 
 export default function Hall({ lang }: { lang: Locale }) {

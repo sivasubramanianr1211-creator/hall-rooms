@@ -1,6 +1,6 @@
 # Logo
 
-Generates the Raja Valamburi logo set in `public/brand/`: a crown over a
+Generates the Raja Valampuri logo set in `public/brand/`: a crown over a
 right-turning (valampuri) conch, with the name set in Cinzel (SIL Open Font
 License, see `fonts/OFL.txt`) and converted to outlines.
 

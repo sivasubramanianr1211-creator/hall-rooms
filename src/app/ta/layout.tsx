@@ -1,6 +1,9 @@
 import type { ReactNode } from "react";
 import { Noto_Sans_Tamil, Noto_Serif_Tamil } from "next/font/google";
 import SiteShell from "@/components/SiteShell";
+import { siteMetadata } from "@/lib/seo";
+
+export const metadata = siteMetadata("ta");
 
 // Loaded only on Tamil pages; globals.css puts them after the Latin fonts.
 const tamilSans = Noto_Sans_Tamil({

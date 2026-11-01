@@ -5,8 +5,8 @@
 import { tx, type Locale, type Text } from "@/lib/i18n";
 
 export const business = {
-  brandName: { en: "Raja Valamburi", ta: "ராஜா வலம்புரி" } as Text,
-  fullName: { en: "Raja Valamburi Hall & Rooms", ta: "ராஜா வலம்புரி மண்டபம் & அறைகள்" } as Text,
+  brandName: { en: "Raja Valampuri", ta: "ராஜா வலம்புரி" } as Text,
+  fullName: { en: "Raja Valampuri Hall & Rooms", ta: "ராஜா வலம்புரி மண்டபம் & அறைகள்" } as Text,
   legalName: "", // name on GST / licences, if different from the brand
   tagline: { en: "Hall & Rooms", ta: "மண்டபம் & அறைகள்" } as Text,
   logo: "/brand/logo-horizontal.svg", // header logo; all versions are in public/brand/
@@ -15,7 +15,7 @@ export const business = {
   address: {
     line1: { en: "", ta: "" } as Text,
     line2: { en: "", ta: "" } as Text,
-    city: { en: "", ta: "" } as Text,
+    city: { en: "Kundrakudi", ta: "குன்றக்குடி" } as Text,
     district: { en: "Sivaganga", ta: "சிவகங்கை" } as Text,
     state: { en: "Tamil Nadu", ta: "தமிழ்நாடு" } as Text,
     pin: "",

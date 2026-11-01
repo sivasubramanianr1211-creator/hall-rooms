@@ -4,13 +4,12 @@ import { Missing } from "@/components/ui";
 import { business } from "@/content/business";
 import { dict } from "@/lib/dictionary";
 import { tx, type Locale } from "@/lib/i18n";
+import { pageMetadata } from "@/lib/seo";
 import { gaId } from "@/lib/site";
 
 export function privacyMetadata(lang: Locale): Metadata {
-  return {
-    title: `${dict(lang).privacy.metaTitle} | ${tx(business.fullName, lang)}`,
-    alternates: { languages: { en: "/privacy", ta: "/ta/privacy" } },
-  };
+  const d = dict(lang);
+  return pageMetadata(lang, "/privacy", `${d.privacy.metaTitle} | ${d.seo.suffix}`, undefined);
 }
 
 export default function Privacy({ lang }: { lang: Locale }) {

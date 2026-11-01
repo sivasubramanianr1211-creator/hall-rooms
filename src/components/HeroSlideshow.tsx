@@ -6,7 +6,7 @@ import Image from "next/image";
 const photos = [
   {
     src: "/images/exterior.jpg",
-    alt: "Raja Valamburi Hall & Rooms entrance and sign at dusk",
+    alt: "Raja Valampuri Hall & Rooms entrance and sign at dusk",
     position: "object-[80%_center]", // the sign is on the right
   },
   { src: "/images/room.jpg", alt: "Guest room with king bed, sofa and TV", position: "object-center" },

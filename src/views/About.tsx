@@ -6,12 +6,11 @@ import { business } from "@/content/business";
 import { about } from "@/content/media";
 import { dict } from "@/lib/dictionary";
 import { tx, type Locale } from "@/lib/i18n";
+import { pageMetadata } from "@/lib/seo";
 
 export function aboutMetadata(lang: Locale): Metadata {
-  return {
-    title: `${dict(lang).about.metaTitle} | ${tx(business.fullName, lang)}`,
-    alternates: { languages: { en: "/about", ta: "/ta/about" } },
-  };
+  const d = dict(lang);
+  return pageMetadata(lang, "/about", `${d.about.metaTitle} | ${d.seo.suffix}`, d.meta.description);
 }
 
 export default function About({ lang }: { lang: Locale }) {

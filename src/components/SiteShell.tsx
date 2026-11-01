@@ -82,7 +82,7 @@ export default function SiteShell({
                 <Image
                   src={business.logo}
                   alt={fullName}
-                  width={639}
+                  width={638}
                   height={128}
                   priority
                   // Phones: as large as fits beside the two header buttons.

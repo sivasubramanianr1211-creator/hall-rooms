@@ -1,4 +1,4 @@
-"""Build the Raja Valamburi logo set: emblem (crown over a right-turning conch)
+"""Build the Raja Valampuri logo set: emblem (crown over a right-turning conch)
 plus a Cinzel wordmark converted to outlines. Usage: build.py <out_dir>"""
 
 import math, pathlib, sys
@@ -81,7 +81,7 @@ SOLID_ON_LIGHT = "#8F7020"  # gold-700: readable on ivory / white
 def write(name, w, h, body, bg=None):
     rect = f'<rect width="{w:.0f}" height="{h:.0f}" rx="{w * 0.18 if bg == "tile" else 0:.0f}" fill="#0E0B07"/>' if bg else ""
     svg = (f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {w:.0f} {h:.0f}" width="{w:.0f}" height="{h:.0f}">'
-           f'<title>Raja Valamburi Hall &amp; Rooms</title>{rect}{body}</svg>\n')
+           f'<title>Raja Valampuri Hall &amp; Rooms</title>{rect}{body}</svg>\n')
     (out / name).write_text(svg)
 
 
@@ -97,7 +97,7 @@ def stacked(light=False):
     eh = 250
     emb_w = (EMBLEM_BOX[2] - EMBLEM_BOX[0]) * eh / (EMBLEM_BOX[3] - EMBLEM_BOX[1])
     name_cap, sub_cap = 54, 20
-    name_d, name_w = text_path("RAJA VALAMBURI", name_cap, 0, 0, 0.06)
+    name_d, name_w = text_path("RAJA VALAMPURI", name_cap, 0, 0, 0.06)
     sub_d, sub_w = text_path("HALL & ROOMS", sub_cap, 0, 0, 0.42)
     W = max(W, name_w + 2 * pad)
     y_emb = pad
@@ -107,7 +107,7 @@ def stacked(light=False):
     H = y_sub + pad
     g1, g2 = ("url(#ge)", "url(#gt)") if not light else (SOLID_ON_LIGHT, SOLID_ON_LIGHT)
     emb, _ = placed_emblem((W - emb_w) / 2, y_emb, eh, g1)
-    name_d, _ = text_path("RAJA VALAMBURI", name_cap, (W - name_w) / 2, y_name, 0.06)
+    name_d, _ = text_path("RAJA VALAMPURI", name_cap, (W - name_w) / 2, y_name, 0.06)
     sub_d, _ = text_path("HALL & ROOMS", sub_cap, (W - sub_w) / 2, y_sub, 0.42)
     cx, rl = W / 2, name_w * 0.32
     rule = (f'<g stroke="{g2}" stroke-width="1.6" stroke-linecap="round">'
@@ -127,7 +127,7 @@ def horizontal(light=False):
     H = eh + 2 * pad
     y_name = pad + eh / 2 - 6
     y_sub = y_name + 16 + sub_cap + 8
-    name_d, name_w = text_path("RAJA VALAMBURI", name_cap, tx, y_name, 0.05)
+    name_d, name_w = text_path("RAJA VALAMPURI", name_cap, tx, y_name, 0.05)
     sub_d, _ = text_path("HALL & ROOMS", sub_cap, tx, y_sub, 0.3)
     W = tx + name_w + pad
     y_rule = y_name + 14

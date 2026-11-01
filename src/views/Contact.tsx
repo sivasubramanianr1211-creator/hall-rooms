@@ -4,15 +4,12 @@ import { anyFilled, Facts, Missing, PageHeader, Section, showMissing } from "@/c
 import { business, fullAddress } from "@/content/business";
 import { dict } from "@/lib/dictionary";
 import { tx, type Locale } from "@/lib/i18n";
+import { pageMetadata } from "@/lib/seo";
 import { telHref, whatsappHref } from "@/lib/site";
 
 export function contactMetadata(lang: Locale): Metadata {
-  const t = dict(lang).contact;
-  return {
-    title: `${t.metaTitle} | ${tx(business.fullName, lang)}`,
-    description: t.metaDescription,
-    alternates: { languages: { en: "/contact", ta: "/ta/contact" } },
-  };
+  const d = dict(lang);
+  return pageMetadata(lang, "/contact", d.seo.contactTitle, d.contact.metaDescription);
 }
 
 const linkClass = "text-gold-200 underline-offset-4 hover:text-gold-300 hover:underline";

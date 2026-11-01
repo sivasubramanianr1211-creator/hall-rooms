@@ -13,19 +13,15 @@ import {
   Section,
   showMissing,
 } from "@/components/ui";
-import { business } from "@/content/business";
 import { facilities, policies, roomTypes, stay, tariffNotes } from "@/content/rooms";
 import { dict } from "@/lib/dictionary";
 import { tx, type Locale } from "@/lib/i18n";
+import { pageMetadata } from "@/lib/seo";
 import { inr } from "@/lib/site";
 
 export function roomsMetadata(lang: Locale): Metadata {
-  const t = dict(lang).rooms;
-  return {
-    title: `${t.metaTitle} | ${tx(business.fullName, lang)}`,
-    description: t.metaDescription,
-    alternates: { languages: { en: "/rooms", ta: "/ta/rooms" } },
-  };
+  const d = dict(lang);
+  return pageMetadata(lang, "/rooms", d.seo.roomsTitle, d.seo.roomsDescription);
 }
 
 export default function Rooms({ lang }: { lang: Locale }) {

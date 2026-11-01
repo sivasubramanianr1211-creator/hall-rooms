@@ -8,7 +8,7 @@ const playfair = Playfair_Display({ variable: "--font-playfair", subsets: ["lati
 const tamilSans = Noto_Sans_Tamil({ variable: "--font-tamil-sans", subsets: ["tamil"], preload: false });
 
 export const metadata: Metadata = {
-  title: "Page not found | Raja Valamburi Hall & Rooms",
+  title: "Page not found | Raja Valampuri Hall & Rooms",
 };
 
 // Shared by both languages, so it says everything in English and Tamil.
@@ -18,7 +18,7 @@ export default function GlobalNotFound() {
       <body className="flex min-h-full items-center justify-center bg-ink-950 px-6 font-sans">
         <main className="max-w-md py-24 text-center">
           {/* eslint-disable-next-line @next/next/no-img-element -- static asset, no layout shift to avoid */}
-          <img src="/brand/logo-horizontal.svg" alt="Raja Valamburi Hall & Rooms" className="mx-auto h-12 w-auto" />
+          <img src="/brand/logo-horizontal.svg" alt="Raja Valampuri Hall & Rooms" className="mx-auto h-12 w-auto" />
           <p className="mt-10 font-display text-6xl text-gold-400">404</p>
           <h1 className="mt-4 font-display text-2xl text-gold-300">This page doesn&apos;t exist.</h1>
           <p lang="ta" className="mt-2 text-gold-200/80">

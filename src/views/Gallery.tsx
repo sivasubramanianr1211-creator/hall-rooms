@@ -1,18 +1,14 @@
 import type { Metadata } from "next";
 import ClickToLoad from "@/components/ClickToLoad";
 import { Missing, PageHeader, PhotoGrid, Section, showMissing } from "@/components/ui";
-import { business } from "@/content/business";
 import { gallery, video } from "@/content/media";
 import { dict } from "@/lib/dictionary";
 import { tx, type Locale } from "@/lib/i18n";
+import { pageMetadata } from "@/lib/seo";
 
 export function galleryMetadata(lang: Locale): Metadata {
-  const t = dict(lang).gallery;
-  return {
-    title: `${t.metaTitle} | ${tx(business.fullName, lang)}`,
-    description: t.metaDescription,
-    alternates: { languages: { en: "/gallery", ta: "/ta/gallery" } },
-  };
+  const d = dict(lang);
+  return pageMetadata(lang, "/gallery", `${d.gallery.metaTitle} | ${d.seo.suffix}`, d.gallery.metaDescription);
 }
 
 export default function Gallery({ lang }: { lang: Locale }) {

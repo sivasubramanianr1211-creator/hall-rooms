@@ -1,18 +1,14 @@
 import type { Metadata } from "next";
 import ContactButtons from "@/components/ContactButtons";
 import { Missing, PageHeader, Section, showMissing } from "@/components/ui";
-import { business } from "@/content/business";
 import { faqs } from "@/content/faqs";
 import { dict } from "@/lib/dictionary";
 import { tx, type Locale } from "@/lib/i18n";
+import { pageMetadata } from "@/lib/seo";
 
 export function faqMetadata(lang: Locale): Metadata {
-  const t = dict(lang).faq;
-  return {
-    title: `${t.metaTitle} | ${tx(business.fullName, lang)}`,
-    description: t.metaDescription,
-    alternates: { languages: { en: "/faq", ta: "/ta/faq" } },
-  };
+  const d = dict(lang);
+  return pageMetadata(lang, "/faq", `${d.faq.metaTitle} | ${d.seo.suffix}`, d.faq.metaDescription);
 }
 
 export default function Faq({ lang }: { lang: Locale }) {

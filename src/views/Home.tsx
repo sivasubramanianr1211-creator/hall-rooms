@@ -6,17 +6,16 @@ import ContactButtons from "@/components/ContactButtons";
 import HeroSlideshow from "@/components/HeroSlideshow";
 import Testimonials from "@/components/Testimonials";
 import { buttonPrimary, buttonSecondary, PhotoGrid, Section } from "@/components/ui";
-import { business, fullAddress } from "@/content/business";
+import { business } from "@/content/business";
 import { gallery } from "@/content/media";
+import { facilities, stay } from "@/content/rooms";
 import { dict } from "@/lib/dictionary";
 import { localePath, tx, type Locale } from "@/lib/i18n";
+import { pageMetadata, siteUrl } from "@/lib/seo";
 
 export function homeMetadata(lang: Locale): Metadata {
-  return {
-    title: tx(business.fullName, lang),
-    description: dict(lang).meta.description,
-    alternates: { languages: { en: "/", ta: "/ta" } },
-  };
+  const d = dict(lang);
+  return pageMetadata(lang, "/", d.seo.homeTitle, d.seo.homeDescription);
 }
 
 export default function Home({ lang }: { lang: Locale }) {
@@ -28,7 +27,7 @@ export default function Home({ lang }: { lang: Locale }) {
       href: localePath(lang, "/hall"),
       title: t.home.hallTitle,
       body: t.home.hallBody,
-      image: { src: "/images/exterior.jpg", alt: "Raja Valamburi entrance at dusk" },
+      image: { src: "/images/exterior.jpg", alt: "Raja Valampuri entrance at dusk" },
     },
     {
       href: localePath(lang, "/rooms"),
@@ -40,11 +39,22 @@ export default function Home({ lang }: { lang: Locale }) {
 
   // Structured data so Google can show the business in search and Maps.
   const a = business.address;
+  const sameAs = [...Object.values(business.social), business.googleBusinessUrl].filter(Boolean);
+  const amenities = facilities
+    .filter((f) => f.available)
+    .map((f) => ({ "@type": "LocationFeatureSpecification", name: tx(f.name, lang), value: true }));
   const jsonLd = {
     "@context": "https://schema.org",
-    "@type": "LodgingBusiness",
+    "@type": ["Hotel", "EventVenue"],
+    "@id": `${siteUrl}/#business`,
     name: tx(business.fullName, lang),
-    image: "/images/exterior.jpg",
+    // The signboard spells it "Valamburi", so people may search that way too.
+    alternateName: [tx(business.fullName, lang === "en" ? "ta" : "en"), "Raja Valampuri", "Raja Valamburi"],
+    description: t.seo.homeDescription,
+    url: siteUrl + localePath(lang, "/").replace(/^\/$/, "/"),
+    inLanguage: lang,
+    logo: `${siteUrl}/brand/logo-icon-1024.png`,
+    image: [`${siteUrl}/images/exterior.jpg`, `${siteUrl}/images/room.jpg`, `${siteUrl}/images/suite.jpg`],
     ...(business.phone && { telephone: business.phone }),
     ...(business.email && { email: business.email }),
     address: {
@@ -57,6 +67,13 @@ export default function Home({ lang }: { lang: Locale }) {
     },
     geo: { "@type": "GeoCoordinates", latitude: business.geo.lat, longitude: business.geo.lng },
     ...(business.mapsUrl && { hasMap: business.mapsUrl }),
+    areaServed: (lang === "ta" ? ["குன்றக்குடி", "பிள்ளையார்பட்டி", "காரைக்குடி"] : ["Kundrakudi", "Pillayarpatti", "Karaikudi"]).map(
+      (name) => ({ "@type": "Place", name }),
+    ),
+    ...(amenities.length > 0 && { amenityFeature: amenities }),
+    ...(stay.checkIn && { checkinTime: stay.checkIn }),
+    ...(stay.checkOut && { checkoutTime: stay.checkOut }),
+    ...(sameAs.length > 0 && { sameAs }),
   };
 
   const ta = lang === "ta";
@@ -71,7 +88,10 @@ export default function Home({ lang }: { lang: Locale }) {
       <section className="relative flex min-h-[92vh] items-center overflow-hidden bg-ink-950">
         <HeroSlideshow />
         <div className="relative z-10 mx-auto w-full max-w-6xl px-6 pt-24 pb-16">
-          <p className="text-sm tracking-[0.25em] text-gold-400 uppercase">{tx(business.tagline, lang)}</p>
+          <p className="text-sm tracking-[0.25em] text-gold-400 uppercase">
+            {tx(business.tagline, lang)}
+            {tx(business.address.city, lang) && <> · {tx(business.address.city, lang)}</>}
+          </p>
           {/* Tamil words are longer, so the headline is a step smaller. */}
           <h1
             className={`mt-4 max-w-2xl font-display text-gold-200 ${
@@ -154,7 +174,7 @@ export default function Home({ lang }: { lang: Locale }) {
       )}
 
       {nearby.length > 0 && (
-        <Section title={t.home.easyToReach} intro={fullAddress(lang) || undefined}>
+        <Section title={t.home.nearTitle} intro={t.home.nearBody}>
           <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {nearby.map((d) => (
               <li key={tx(d.place, "en")} className="rounded-lg border border-gold-500/25 bg-ink-900 p-5">
