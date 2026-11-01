@@ -1,15 +1,7 @@
-import type { Metadata } from "next";
-import ContactButtons from "@/components/ContactButtons";
-import { Missing, PageHeader, Section, showMissing } from "@/components/ui";
+import { Missing, SectionIntro, Section, showMissing } from "@/components/ui";
 import { faqs } from "@/content/faqs";
 import { dict } from "@/lib/dictionary";
 import { tx, type Locale } from "@/lib/i18n";
-import { pageMetadata } from "@/lib/seo";
-
-export function faqMetadata(lang: Locale): Metadata {
-  const d = dict(lang);
-  return pageMetadata(lang, "/faq", `${d.faq.metaTitle} | ${d.seo.suffix}`, d.faq.metaDescription);
-}
 
 export default function Faq({ lang }: { lang: Locale }) {
   const t = dict(lang).faq;
@@ -29,14 +21,14 @@ export default function Faq({ lang }: { lang: Locale }) {
   };
 
   return (
-    <main>
+    <section id="faq">
       {answered.length > 0 && (
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c") }}
         />
       )}
-      <PageHeader eyebrow={t.eyebrow} title={t.title} />
+      <SectionIntro eyebrow={t.eyebrow} title={t.title} />
 
       <Section>
         <div className="max-w-3xl divide-y divide-gold-500/15 border-y border-gold-500/15">
@@ -52,9 +44,6 @@ export default function Faq({ lang }: { lang: Locale }) {
         </div>
       </Section>
 
-      <Section title={t.more} alt>
-        <ContactButtons lang={lang} />
-      </Section>
-    </main>
+    </section>
   );
 }

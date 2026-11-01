@@ -1,17 +1,19 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import Link from "next/link";
 import BookButton from "@/components/BookButton";
-import ContactButtons from "@/components/ContactButtons";
 import HeroSlideshow from "@/components/HeroSlideshow";
-import Testimonials from "@/components/Testimonials";
-import { buttonPrimary, buttonSecondary, PhotoGrid, Section } from "@/components/ui";
+import { Section } from "@/components/ui";
 import { business } from "@/content/business";
-import { gallery } from "@/content/media";
 import { facilities, stay } from "@/content/rooms";
 import { dict } from "@/lib/dictionary";
 import { localePath, tx, type Locale } from "@/lib/i18n";
 import { pageMetadata, siteUrl } from "@/lib/seo";
+import About from "./About";
+import Contact from "./Contact";
+import Faq from "./Faq";
+import Gallery from "./Gallery";
+import Hall from "./Hall";
+import Rooms from "./Rooms";
 
 export function homeMetadata(lang: Locale): Metadata {
   const d = dict(lang);
@@ -20,17 +22,16 @@ export function homeMetadata(lang: Locale): Metadata {
 
 export default function Home({ lang }: { lang: Locale }) {
   const t = dict(lang);
-  const roomPhotos = gallery.find((c) => c.id === "rooms")?.photos ?? [];
   const nearby = business.distances.filter((d) => d.km != null);
   const offers = [
     {
-      href: localePath(lang, "/hall"),
+      href: "#hall",
       title: t.home.hallTitle,
       body: t.home.hallBody,
       image: { src: "/images/exterior.jpg", alt: "Raja Valampuri entrance at dusk" },
     },
     {
-      href: localePath(lang, "/rooms"),
+      href: "#rooms",
       title: t.home.roomsTitle,
       body: t.home.roomsBody,
       image: { src: "/images/room.jpg", alt: "Guest room with king bed" },
@@ -105,16 +106,16 @@ export default function Home({ lang }: { lang: Locale }) {
           <p className="mt-6 max-w-lg text-lg leading-relaxed text-gold-200/80">{t.home.heroBody}</p>
           <div className="mt-10 flex flex-wrap gap-4">
             <BookButton
-              href={localePath(lang, "/contact")}
+              href="#contact"
               label={t.common.bookVisit}
               className="rounded-md bg-gold-400 px-7 py-3 font-semibold text-ink-950 shadow-lg shadow-gold-400/20 transition hover:bg-gold-300"
             />
-            <Link
-              href={localePath(lang, "/hall")}
+            <a
+              href="#hall"
               className="rounded-md border border-gold-400/60 px-7 py-3 font-semibold text-gold-300 transition hover:bg-gold-400/10"
             >
               {t.common.seeHall}
-            </Link>
+            </a>
             {business.mapsUrl && (
               <a
                 href={business.mapsUrl}
@@ -135,7 +136,7 @@ export default function Home({ lang }: { lang: Locale }) {
       <Section title={t.home.offerTitle}>
         <div className="grid gap-6 md:grid-cols-2">
           {offers.map((offer) => (
-            <Link
+            <a
               key={offer.href}
               href={offer.href}
               className="group overflow-hidden rounded-lg border border-gold-500/25 bg-ink-900 transition hover:border-gold-400/60"
@@ -154,30 +155,16 @@ export default function Home({ lang }: { lang: Locale }) {
                 <p className="mt-2 leading-relaxed text-gold-200/70">{offer.body}</p>
                 <p className="mt-4 text-sm font-semibold text-gold-400">{t.common.viewDetails}</p>
               </div>
-            </Link>
+            </a>
           ))}
         </div>
       </Section>
 
-      {roomPhotos.length > 0 && (
-        <Section title={t.home.insideRooms} alt>
-          <PhotoGrid photos={roomPhotos} />
-          <div className="mt-8 flex flex-wrap gap-4">
-            <Link href={localePath(lang, "/rooms")} className={buttonPrimary}>
-              {t.home.roomsTariff}
-            </Link>
-            <Link href={localePath(lang, "/gallery")} className={buttonSecondary}>
-              {t.home.fullGallery}
-            </Link>
-          </div>
-        </Section>
-      )}
-
       {nearby.length > 0 && (
-        <Section title={t.home.nearTitle} intro={t.home.nearBody}>
+        <Section title={t.home.nearTitle} intro={t.home.nearBody} alt>
           <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {nearby.map((d) => (
-              <li key={tx(d.place, "en")} className="rounded-lg border border-gold-500/25 bg-ink-900 p-5">
+              <li key={tx(d.place, "en")} className="rounded-lg border border-gold-500/25 bg-ink-950 p-5">
                 <p className="font-display text-3xl text-gold-300">
                   {d.km} {t.common.km}
                 </p>
@@ -188,11 +175,13 @@ export default function Home({ lang }: { lang: Locale }) {
         </Section>
       )}
 
-      <Testimonials lang={lang} alt />
-
-      <Section id="contact" title={t.home.planTitle} intro={t.home.planBody}>
-        <ContactButtons lang={lang} />
-      </Section>
+      {/* Same order as the menu; each section carries the id the menu links to. */}
+      <Hall lang={lang} />
+      <Rooms lang={lang} />
+      <Gallery lang={lang} />
+      <About lang={lang} />
+      <Faq lang={lang} />
+      <Contact lang={lang} />
     </main>
   );
 }

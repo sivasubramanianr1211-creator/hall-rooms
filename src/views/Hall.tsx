@@ -1,5 +1,3 @@
-import type { Metadata } from "next";
-import ContactButtons from "@/components/ContactButtons";
 import {
   anyFilled,
   Card,
@@ -7,7 +5,7 @@ import {
   DraftBadge,
   Facts,
   Missing,
-  PageHeader,
+  SectionIntro,
   PhotoGrid,
   published,
   Section,
@@ -16,13 +14,7 @@ import {
 import { eventParking, eventTypes, halls, packages, payment, slots, vendors } from "@/content/hall";
 import { dict } from "@/lib/dictionary";
 import { tx, type Locale } from "@/lib/i18n";
-import { pageMetadata } from "@/lib/seo";
 import { inr } from "@/lib/site";
-
-export function hallMetadata(lang: Locale): Metadata {
-  const d = dict(lang);
-  return pageMetadata(lang, "/hall", d.seo.hallTitle, d.seo.hallDescription);
-}
 
 export default function Hall({ lang }: { lang: Locale }) {
   const t = dict(lang);
@@ -33,8 +25,8 @@ export default function Hall({ lang }: { lang: Locale }) {
   const vendorFilled = anyFilled(vendors.inHouse, vendors.outsideAllowed, vendors.outsideCharge);
 
   return (
-    <main>
-      <PageHeader eyebrow={h.eyebrow} title={h.title} intro={h.intro} />
+    <section id="hall">
+      <SectionIntro eyebrow={h.eyebrow} title={h.title} intro={h.intro} />
 
       {halls
         .filter((hall) => showMissing || anyFilled(...Object.values({ ...hall, name: null })))
@@ -156,9 +148,6 @@ export default function Hall({ lang }: { lang: Locale }) {
         </Section>
       )}
 
-      <Section title={h.checkDate}>
-        <ContactButtons lang={lang} message={t.whatsapp.hall} />
-      </Section>
-    </main>
+    </section>
   );
 }

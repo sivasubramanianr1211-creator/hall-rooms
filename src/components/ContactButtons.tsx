@@ -29,7 +29,7 @@ export default function ContactButtons({ lang, message }: { lang: Locale; messag
       ) : (
         <Missing>WhatsApp number</Missing>
       )}
-      <Link href={localePath(lang, "/contact")} className={buttonSecondary}>
+      <Link href={`${localePath(lang, "/")}#contact`} className={buttonSecondary}>
         {t.common.allContact}
       </Link>
     </div>

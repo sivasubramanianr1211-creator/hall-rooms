@@ -21,3 +21,66 @@
     X-Content-Type-Options = "nosniff"
     Referrer-Policy = "strict-origin-when-cross-origin"
     X-Frame-Options = "SAMEORIGIN"
+
+# The site is one page now. Old page addresses (already shared or indexed)
+# go to the matching section of the home page.
+
+[[redirects]]
+  from = "/hall"
+  to = "/#hall"
+  status = 301
+
+[[redirects]]
+  from = "/rooms"
+  to = "/#rooms"
+  status = 301
+
+[[redirects]]
+  from = "/gallery"
+  to = "/#gallery"
+  status = 301
+
+[[redirects]]
+  from = "/about"
+  to = "/#about"
+  status = 301
+
+[[redirects]]
+  from = "/faq"
+  to = "/#faq"
+  status = 301
+
+[[redirects]]
+  from = "/contact"
+  to = "/#contact"
+  status = 301
+
+[[redirects]]
+  from = "/ta/hall"
+  to = "/ta#hall"
+  status = 301
+
+[[redirects]]
+  from = "/ta/rooms"
+  to = "/ta#rooms"
+  status = 301
+
+[[redirects]]
+  from = "/ta/gallery"
+  to = "/ta#gallery"
+  status = 301
+
+[[redirects]]
+  from = "/ta/about"
+  to = "/ta#about"
+  status = 301
+
+[[redirects]]
+  from = "/ta/faq"
+  to = "/ta#faq"
+  status = 301
+
+[[redirects]]
+  from = "/ta/contact"
+  to = "/ta#contact"
+  status = 301

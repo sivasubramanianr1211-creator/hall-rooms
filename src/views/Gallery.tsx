@@ -1,23 +1,16 @@
-import type { Metadata } from "next";
 import ClickToLoad from "@/components/ClickToLoad";
-import { Missing, PageHeader, PhotoGrid, Section, showMissing } from "@/components/ui";
+import { Missing, SectionIntro, PhotoGrid, Section, showMissing } from "@/components/ui";
 import { gallery, video } from "@/content/media";
 import { dict } from "@/lib/dictionary";
 import { tx, type Locale } from "@/lib/i18n";
-import { pageMetadata } from "@/lib/seo";
-
-export function galleryMetadata(lang: Locale): Metadata {
-  const d = dict(lang);
-  return pageMetadata(lang, "/gallery", `${d.gallery.metaTitle} | ${d.seo.suffix}`, d.gallery.metaDescription);
-}
 
 export default function Gallery({ lang }: { lang: Locale }) {
   const t = dict(lang);
   const categories = gallery.filter((c) => c.photos.length > 0 || showMissing);
 
   return (
-    <main>
-      <PageHeader eyebrow={t.gallery.eyebrow} title={t.gallery.title} />
+    <section id="gallery">
+      <SectionIntro eyebrow={t.gallery.eyebrow} title={t.gallery.title} />
 
       {(video.youtubeId || showMissing) && (
         <Section title={t.gallery.video}>
@@ -36,7 +29,7 @@ export default function Gallery({ lang }: { lang: Locale }) {
       )}
 
       {categories.map((category, i) => (
-        <Section key={category.id} id={category.id} title={tx(category.title, lang)} alt={i % 2 === 0}>
+        <Section key={category.id} id={`gallery-${category.id}`} title={tx(category.title, lang)} alt={i % 2 === 0}>
           {category.photos.length > 0 ? (
             <PhotoGrid photos={category.photos} />
           ) : (
@@ -44,6 +37,6 @@ export default function Gallery({ lang }: { lang: Locale }) {
           )}
         </Section>
       ))}
-    </main>
+    </section>
   );
 }

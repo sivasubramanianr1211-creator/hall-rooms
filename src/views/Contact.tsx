@@ -1,16 +1,9 @@
-import type { Metadata } from "next";
 import ClickToLoad from "@/components/ClickToLoad";
-import { anyFilled, Facts, Missing, PageHeader, Section, showMissing } from "@/components/ui";
+import { anyFilled, Facts, Missing, SectionIntro, Section, showMissing } from "@/components/ui";
 import { business, fullAddress } from "@/content/business";
 import { dict } from "@/lib/dictionary";
 import { tx, type Locale } from "@/lib/i18n";
-import { pageMetadata } from "@/lib/seo";
 import { telHref, whatsappHref } from "@/lib/site";
-
-export function contactMetadata(lang: Locale): Metadata {
-  const d = dict(lang);
-  return pageMetadata(lang, "/contact", d.seo.contactTitle, d.contact.metaDescription);
-}
 
 const linkClass = "text-gold-200 underline-offset-4 hover:text-gold-300 hover:underline";
 
@@ -22,8 +15,8 @@ export default function Contact({ lang }: { lang: Locale }) {
   const social = Object.entries(b.social).filter(([, url]) => url);
 
   return (
-    <main>
-      <PageHeader eyebrow={c.eyebrow} title={c.title} intro={c.intro} />
+    <section id="contact">
+      <SectionIntro eyebrow={c.eyebrow} title={c.title} intro={c.intro} />
 
       <Section>
         <Facts
@@ -146,6 +139,6 @@ export default function Contact({ lang }: { lang: Locale }) {
           />
         </Section>
       )}
-    </main>
+    </section>
   );
 }

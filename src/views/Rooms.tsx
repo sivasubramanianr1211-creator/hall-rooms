@@ -1,6 +1,4 @@
-import type { Metadata } from "next";
 import Image from "next/image";
-import ContactButtons from "@/components/ContactButtons";
 import {
   anyFilled,
   Card,
@@ -8,7 +6,7 @@ import {
   DraftBadge,
   Facts,
   Missing,
-  PageHeader,
+  SectionIntro,
   published,
   Section,
   showMissing,
@@ -16,13 +14,7 @@ import {
 import { facilities, policies, roomTypes, stay, tariffNotes } from "@/content/rooms";
 import { dict } from "@/lib/dictionary";
 import { tx, type Locale } from "@/lib/i18n";
-import { pageMetadata } from "@/lib/seo";
 import { inr } from "@/lib/site";
-
-export function roomsMetadata(lang: Locale): Metadata {
-  const d = dict(lang);
-  return pageMetadata(lang, "/rooms", d.seo.roomsTitle, d.seo.roomsDescription);
-}
 
 export default function Rooms({ lang }: { lang: Locale }) {
   const t = dict(lang);
@@ -33,8 +25,8 @@ export default function Rooms({ lang }: { lang: Locale }) {
   const shownPolicies = policies.filter((p) => tx(p.text, lang) || showMissing);
 
   return (
-    <main>
-      <PageHeader eyebrow={r.eyebrow} title={r.title} intro={r.intro} />
+    <section id="rooms">
+      <SectionIntro eyebrow={r.eyebrow} title={r.title} intro={r.intro} />
 
       <Section>
         <div className="grid gap-8">
@@ -140,9 +132,6 @@ export default function Rooms({ lang }: { lang: Locale }) {
         </Section>
       )}
 
-      <Section title={r.book}>
-        <ContactButtons lang={lang} message={t.whatsapp.room} />
-      </Section>
-    </main>
+    </section>
   );
 }

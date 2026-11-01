@@ -24,6 +24,11 @@
   --font-display: var(--font-playfair), var(--font-tamil-serif, Georgia), serif;
 }
 
+/* Menu links land below the fixed header instead of under it. */
+html {
+  scroll-padding-top: 6rem;
+}
+
 body {
   background: var(--color-ink-950);
   color: var(--color-gold-200);

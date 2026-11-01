@@ -5,6 +5,7 @@ import { Geist, Playfair_Display } from "next/font/google";
 import ConsentBanner from "@/components/ConsentBanner";
 import CookieSettingsButton from "@/components/CookieSettingsButton";
 import LanguageSwitch from "@/components/LanguageSwitch";
+import MobileMenu from "@/components/MobileMenu";
 import WhatsAppFloat from "@/components/WhatsAppFloat";
 import { business, fullAddress } from "@/content/business";
 import { dict } from "@/lib/dictionary";
@@ -24,19 +25,13 @@ const playfair = Playfair_Display({
 
 type NavItem = { href: string; label: string; external?: boolean };
 
-// Internal pages use Link; the map opens Google Maps in a new tab.
+// Section links are plain anchors (they also work from the privacy page);
+// the map opens Google Maps in a new tab.
 function NavLink({ item, className }: { item: NavItem; className: string }) {
-  if (item.external) {
-    return (
-      <a href={item.href} target="_blank" rel="noopener" className={className}>
-        {item.label}
-      </a>
-    );
-  }
   return (
-    <Link href={item.href} className={className}>
+    <a href={item.href} className={className} {...(item.external && { target: "_blank", rel: "noopener" })}>
       {item.label}
-    </Link>
+    </a>
   );
 }
 
@@ -52,14 +47,17 @@ export default function SiteShell({
   children: ReactNode;
 }) {
   const t = dict(lang);
+  // Everything lives on the home page; each item scrolls to its section.
+  const home = localePath(lang, "/");
+  const section = (id: string) => `${home}#${id}`;
   const nav: NavItem[] = [
-    { href: localePath(lang, "/hall"), label: t.nav.hall },
-    { href: localePath(lang, "/rooms"), label: t.nav.rooms },
-    { href: localePath(lang, "/gallery"), label: t.nav.gallery },
-    { href: localePath(lang, "/about"), label: t.nav.about },
-    { href: localePath(lang, "/faq"), label: t.nav.faq },
+    { href: section("hall"), label: t.nav.hall },
+    { href: section("rooms"), label: t.nav.rooms },
+    { href: section("gallery"), label: t.nav.gallery },
+    { href: section("about"), label: t.nav.about },
+    { href: section("faq"), label: t.nav.faq },
     ...(business.mapsUrl ? [{ href: business.mapsUrl, label: t.nav.location, external: true }] : []),
-    { href: localePath(lang, "/contact"), label: t.nav.contact },
+    { href: section("contact"), label: t.nav.contact },
   ];
   const social = Object.entries(business.social).filter(([, url]) => url);
   const address = fullAddress(lang);
@@ -75,7 +73,8 @@ export default function SiteShell({
       className={`${geistSans.variable} ${playfair.variable} ${fontClassName} h-full scroll-smooth antialiased`}
     >
       <body className="flex min-h-full flex-col font-sans">
-        <header className="absolute inset-x-0 top-0 z-30">
+        {/* Fixed so the menu stays reachable while scrolling through the sections. */}
+        <header className="fixed inset-x-0 top-0 z-30 border-b border-gold-500/10 bg-ink-950/85 backdrop-blur">
           <nav className="mx-auto flex max-w-6xl items-center justify-between gap-3 px-4 py-4 sm:px-6 sm:py-5">
             <Link href={localePath(lang, "/")} className="min-w-0 font-display text-xl tracking-wide text-gold-300">
               {business.logo ? (
@@ -99,29 +98,7 @@ export default function SiteShell({
                 ))}
               </div>
               <LanguageSwitch lang={lang} />
-              {/* Plain links so the menu closes on navigation without client JS */}
-              <details className="relative xl:hidden">
-                <summary
-                  className="flex h-9 w-9 cursor-pointer list-none items-center justify-center rounded-md border border-gold-400/50 text-gold-300 transition hover:bg-gold-400/10 [&::-webkit-details-marker]:hidden"
-                  aria-label={t.nav.menu}
-                >
-                  <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden="true">
-                    <path d="M4 7h16M4 12h16M4 17h16" />
-                  </svg>
-                </summary>
-                <div className="absolute right-0 mt-2 flex w-52 flex-col rounded-lg border border-gold-500/30 bg-ink-900 p-2 shadow-xl">
-                  {nav.map((item) => (
-                    <a
-                      key={item.href}
-                      href={item.href}
-                      {...(item.external && { target: "_blank", rel: "noopener" })}
-                      className="rounded px-3 py-2 text-gold-200 hover:bg-ink-800"
-                    >
-                      {item.label}
-                    </a>
-                  ))}
-                </div>
-              </details>
+              <MobileMenu items={nav} label={t.nav.menu} />
             </div>
           </nav>
         </header>

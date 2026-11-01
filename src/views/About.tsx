@@ -1,17 +1,10 @@
-import type { Metadata } from "next";
 import Image from "next/image";
 import Testimonials from "@/components/Testimonials";
-import { Missing, PageHeader, Section, showMissing } from "@/components/ui";
+import { Missing, SectionIntro, Section, showMissing } from "@/components/ui";
 import { business } from "@/content/business";
 import { about } from "@/content/media";
 import { dict } from "@/lib/dictionary";
 import { tx, type Locale } from "@/lib/i18n";
-import { pageMetadata } from "@/lib/seo";
-
-export function aboutMetadata(lang: Locale): Metadata {
-  const d = dict(lang);
-  return pageMetadata(lang, "/about", `${d.about.metaTitle} | ${d.seo.suffix}`, d.meta.description);
-}
 
 export default function About({ lang }: { lang: Locale }) {
   const t = dict(lang).about;
@@ -20,8 +13,8 @@ export default function About({ lang }: { lang: Locale }) {
   const ownerRole = tx(about.ownerRole, lang);
 
   return (
-    <main>
-      <PageHeader
+    <section id="about">
+      <SectionIntro
         eyebrow={business.established ? t.since(business.established) : t.eyebrow}
         title={t.title(tx(business.brandName, lang))}
       />
@@ -65,6 +58,6 @@ export default function About({ lang }: { lang: Locale }) {
       )}
 
       <Testimonials lang={lang} />
-    </main>
+    </section>
   );
 }
