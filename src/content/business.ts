@@ -24,7 +24,8 @@ export const business = {
   // Google's cross-platform Maps link: opens the Maps app on phones and a pin
   // in the browser on desktop. (Copied browser links can fail in the app.)
   mapsUrl: "https://www.google.com/maps/search/?api=1&query=10.1055927%2C78.7052155",
-  mapsEmbedUrl: "https://maps.google.com/maps?q=10.1055927,78.7052155&z=15&output=embed",
+  // t=k: satellite view; z=17: close enough to see the building.
+  mapsEmbedUrl: "https://maps.google.com/maps?q=10.1055927,78.7052155&t=k&z=17&output=embed",
   landmarks: [] as Text[], // e.g. { en: "Opposite the bus stand", ta: "பேருந்து நிலையம் எதிரில்" }
   // Road distance from the venue. null = not confirmed yet.
   distances: [
