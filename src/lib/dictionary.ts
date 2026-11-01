@@ -211,7 +211,7 @@ const en = {
     collect2:
       "If you click Decline, Google Analytics is not loaded and no analytics cookies are set. We store your choice in your browser so we don't ask again.",
     collect3:
-      "The map and video on this site load from Google Maps and YouTube only when you click to show them, and those services may then set their own cookies. WhatsApp links open WhatsApp, which handles your messages under its own privacy policy.",
+      "The map on this site is loaded from Google Maps when you scroll to it, and Google may set its own cookies. Videos load from YouTube only when you click to play them. WhatsApp links open WhatsApp, which handles your messages under its own privacy policy.",
     whyTitle: "Why we collect it",
     why: "To know how many people visit, which pages are useful, and how to improve the site. We don't sell this data or use it for advertising.",
     processorTitle: "Who processes it",
@@ -434,7 +434,7 @@ const ta: Dictionary = {
     collect2:
       "\"வேண்டாம்\" என்பதை அழுத்தினால், Google Analytics ஏற்றப்படாது; எந்த குக்கீயும் சேமிக்கப்படாது. மீண்டும் கேட்காமல் இருக்க உங்கள் தேர்வை உங்கள் உலாவியிலேயே சேமிக்கிறோம்.",
     collect3:
-      "இத்தளத்தில் உள்ள வரைபடமும் வீடியோவும் நீங்கள் அழுத்திய பிறகே Google Maps மற்றும் YouTube-இலிருந்து ஏற்றப்படும்; அப்போது அந்தச் சேவைகள் தங்கள் சொந்த குக்கீகளைச் சேமிக்கலாம். WhatsApp இணைப்புகள் WhatsApp-ஐத் திறக்கும்; உங்கள் செய்திகள் அதன் தனியுரிமைக் கொள்கைப்படி கையாளப்படும்.",
+      "இத்தளத்தில் உள்ள வரைபடம் நீங்கள் அந்தப் பகுதிக்கு வரும்போது Google Maps-இலிருந்து ஏற்றப்படும்; Google தனது சொந்த குக்கீகளைச் சேமிக்கலாம். வீடியோக்கள் நீங்கள் இயக்கிய பிறகே YouTube-இலிருந்து ஏற்றப்படும். WhatsApp இணைப்புகள் WhatsApp-ஐத் திறக்கும்; உங்கள் செய்திகள் அதன் தனியுரிமைக் கொள்கைப்படி கையாளப்படும்.",
     whyTitle: "ஏன் சேகரிக்கிறோம்",
     why: "எத்தனை பேர் வருகிறார்கள், எந்தப் பக்கங்கள் பயனுள்ளவை, தளத்தை எப்படி மேம்படுத்தலாம் என்பதை அறிய. இந்தத் தரவை விற்பதோ விளம்பரத்திற்குப் பயன்படுத்துவதோ இல்லை.",
     processorTitle: "தரவைக் கையாள்பவர்",

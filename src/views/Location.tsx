@@ -1,4 +1,3 @@
-import ClickToLoad from "@/components/ClickToLoad";
 import { Missing, SectionIntro, Section, showMissing } from "@/components/ui";
 import { business, fullAddress } from "@/content/business";
 import { dict } from "@/lib/dictionary";
@@ -53,13 +52,15 @@ export default function Location({ lang }: { lang: Locale }) {
               </a>
             )}
           </div>
+          {/* Shown straight away (satellite view); loads when scrolled near. */}
           {b.mapsEmbedUrl && (
-            <ClickToLoad
+            <iframe
               src={b.mapsEmbedUrl}
               title={`${t.contact.mapTitle}: ${tx(b.fullName, lang)}`}
-              label={t.common.showMap}
-              note={t.common.loadsFromGoogle}
-              className="min-h-80 lg:h-full"
+              loading="lazy"
+              allowFullScreen
+              referrerPolicy="strict-origin-when-cross-origin"
+              className="min-h-80 w-full rounded-lg border border-gold-500/30 lg:h-full"
             />
           )}
         </div>
