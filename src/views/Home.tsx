@@ -28,13 +28,13 @@ export default function Home({ lang }: { lang: Locale }) {
       href: "#hall",
       title: t.home.hallTitle,
       body: t.home.hallBody,
-      image: { src: "/images/exterior.jpg", alt: "Raja Valampuri entrance at dusk" },
+      image: { src: "/images/veranda.jpg", alt: "Covered veranda outside the guest rooms" },
     },
     {
       href: "#rooms",
       title: t.home.roomsTitle,
       body: t.home.roomsBody,
-      image: { src: "/images/room.jpg", alt: "Guest room with king bed" },
+      image: { src: "/images/room-1.jpg", alt: "Guest room with double bed" },
     },
   ];
 
@@ -55,7 +55,7 @@ export default function Home({ lang }: { lang: Locale }) {
     url: siteUrl + localePath(lang, "/").replace(/^\/$/, "/"),
     inLanguage: lang,
     logo: `${siteUrl}/brand/logo-icon-1024.png`,
-    image: [`${siteUrl}/images/exterior.jpg`, `${siteUrl}/images/room.jpg`, `${siteUrl}/images/suite.jpg`],
+    image: [`${siteUrl}/images/exterior.jpg`, `${siteUrl}/images/building.jpg`, `${siteUrl}/images/room-1.jpg`],
     ...(business.phone && { telephone: business.phone }),
     ...(business.email && { email: business.email }),
     address: {
@@ -86,9 +86,10 @@ export default function Home({ lang }: { lang: Locale }) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c") }}
       />
 
-      <section className="relative flex min-h-[92vh] items-center overflow-hidden bg-ink-950">
+      {/* Text sits low so the signboard in the first photo stays visible above it. */}
+      <section className="relative flex min-h-[92vh] items-end overflow-hidden bg-ink-950">
         <HeroSlideshow />
-        <div className="relative z-10 mx-auto w-full max-w-6xl px-6 pt-24 pb-16">
+        <div className="relative z-10 mx-auto w-full max-w-6xl px-6 pt-40 pb-16 sm:pb-20">
           <p className="text-sm tracking-[0.25em] text-gold-400 uppercase">
             {tx(business.tagline, lang)}
             {tx(business.address.city, lang) && <> · {tx(business.address.city, lang)}</>}
@@ -96,15 +97,16 @@ export default function Home({ lang }: { lang: Locale }) {
           {/* Tamil words are longer, so the headline is a step smaller. */}
           <h1
             className={`mt-4 max-w-2xl font-display text-gold-200 ${
-              ta ? "text-4xl leading-snug sm:text-5xl" : "text-5xl leading-tight sm:text-6xl"
+              ta ? "text-3xl leading-snug sm:text-5xl" : "text-4xl leading-tight sm:text-6xl"
             }`}
           >
             {t.home.heroLine1}
             <br />
             <span className="text-gold-400">{t.home.heroLine2}</span>
           </h1>
-          <p className="mt-6 max-w-lg text-lg leading-relaxed text-gold-200/80">{t.home.heroBody}</p>
-          <div className="mt-10 flex flex-wrap gap-4">
+          {/* Hidden on phones so the text stays below the signboard in the first photo. */}
+          <p className="mt-6 hidden max-w-lg text-lg leading-relaxed text-gold-200/80 sm:block">{t.home.heroBody}</p>
+          <div className="mt-8 flex flex-wrap gap-3 sm:mt-10 sm:gap-4">
             <BookButton
               href="#contact"
               label={t.common.bookVisit}
@@ -117,7 +119,7 @@ export default function Home({ lang }: { lang: Locale }) {
               {t.common.seeHall}
             </a>
             <a
-              href="#location"
+              href="#location-map"
               className="inline-flex items-center gap-2 rounded-md border border-gold-400/60 px-7 py-3 font-semibold text-gold-300 transition hover:bg-gold-400/10"
             >
               <svg viewBox="0 0 24 24" className="h-5 w-5 fill-current" aria-hidden="true">

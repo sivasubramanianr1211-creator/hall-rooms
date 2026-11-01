@@ -32,18 +32,20 @@ export const roomTypes: RoomType[] = [
     size: empty,
     bed: empty,
     maxGuests: null,
+    // From the photos; add AC, TV, geyser etc. once confirmed.
     amenities: [
-      { en: "LED TV", ta: "LED டிவி" },
-      { en: "Hot water (geyser)", ta: "சுடுநீர் (கீசர்)" },
+      { en: "Double bed", ta: "இரட்டைப் படுக்கை" },
       { en: "Attached bathroom", ta: "இணைந்த குளியலறை" },
-      { en: "Sofa seating", ta: "சோஃபா இருக்கை" },
+      { en: "Wardrobe", ta: "அலமாரி" },
+      { en: "Dressing mirror", ta: "அலங்காரக் கண்ணாடி" },
+      { en: "Ceiling fan", ta: "மின்விசிறி" },
     ],
     weekday: null,
     weekend: null,
     photos: [
-      { src: "/images/room.jpg", alt: "Deluxe room with king bed, sofa and TV" },
-      { src: "/images/suite.jpg", alt: "Deluxe room seating area" },
-      { src: "/images/bathroom.jpg", alt: "Attached bathroom with shower and geyser" },
+      { src: "/images/room-1.jpg", alt: "Deluxe room with double bed, TV unit and dressing mirror" },
+      { src: "/images/room-2.jpg", alt: "Deluxe room with double bed and wardrobe" },
+      { src: "/images/bathroom.jpg", alt: "Attached bathroom with shower" },
     ],
   },
   {

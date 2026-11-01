@@ -55,7 +55,7 @@ export default function SiteShell({
     { href: section("gallery"), label: t.nav.gallery },
     { href: section("about"), label: t.nav.about },
     { href: section("faq"), label: t.nav.faq },
-    { href: section("location"), label: t.nav.location },
+    { href: section("location-map"), label: t.nav.location },
     { href: section("contact"), label: t.nav.contact },
   ];
   const social = Object.entries(business.social).filter(([, url]) => url);

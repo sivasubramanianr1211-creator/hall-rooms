@@ -6,11 +6,11 @@ import Image from "next/image";
 const photos = [
   {
     src: "/images/exterior.jpg",
-    alt: "Raja Valampuri Hall & Rooms entrance and sign at dusk",
-    position: "object-[80%_center]", // the sign is on the right
+    alt: "Raja Valampuri Hall & Stay signboard and entrance at sunset",
+    position: "object-[center_30%]", // keep the signboard in view
   },
-  { src: "/images/room.jpg", alt: "Guest room with king bed, sofa and TV", position: "object-center" },
-  { src: "/images/suite.jpg", alt: "Guest room with seating area", position: "object-center" },
+  { src: "/images/building.jpg", alt: "Guest room block with a long veranda and garden", position: "object-center" },
+  { src: "/images/room-1.jpg", alt: "Guest room with double bed and TV unit", position: "object-center" },
 ];
 const secondsPerPhoto = 7;
 
@@ -34,9 +34,9 @@ export default function HeroSlideshow() {
           />
         </div>
       ))}
-      {/* Darken the left side so the headline stays readable */}
-      <div className="absolute inset-0 bg-linear-to-r from-ink-950/95 via-ink-950/70 to-ink-950/20" />
-      <div className="absolute inset-x-0 bottom-0 h-32 bg-linear-to-t from-ink-950 to-transparent" />
+      {/* Darken the lower part, where the headline sits; keep the top bright. */}
+      <div className="absolute inset-0 bg-linear-to-t from-ink-950 via-ink-950/70 via-45% to-ink-950/5" />
+      <div className="absolute inset-0 bg-linear-to-r from-ink-950/50 to-transparent" />
     </div>
   );
 }

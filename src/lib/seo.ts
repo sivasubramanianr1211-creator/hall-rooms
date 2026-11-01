@@ -7,7 +7,7 @@ import { localePath, tx, type Locale } from "./i18n";
 // own domain (or rename the Netlify site).
 export const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL || "https://raja-valamburi.netlify.app").replace(/\/$/, "");
 
-export const shareImage = { url: "/images/exterior.jpg", width: 1600, height: 900 };
+export const shareImage = { url: "/images/exterior.jpg", width: 1447, height: 1087 };
 
 // Shared by both languages' root layouts.
 export function siteMetadata(lang: Locale): Metadata {
