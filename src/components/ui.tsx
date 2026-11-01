@@ -43,7 +43,7 @@ export function SectionIntro({ eyebrow, title, intro }: { eyebrow?: string; titl
   return (
     <header className="mx-auto max-w-6xl px-6 pt-20 pb-2">
       {eyebrow && <p className="text-sm tracking-[0.25em] text-gold-400 uppercase">{eyebrow}</p>}
-      <h2 className="mt-3 font-display text-4xl text-gold-300 sm:text-5xl">{title}</h2>
+      <h2 className="mt-3 font-display text-3xl leading-snug text-gold-300 [overflow-wrap:anywhere] sm:text-4xl lg:text-5xl">{title}</h2>
       {intro && <p className="mt-4 max-w-2xl text-lg leading-relaxed text-gold-200/75">{intro}</p>}
     </header>
   );

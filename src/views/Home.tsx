@@ -13,6 +13,7 @@ import Contact from "./Contact";
 import Faq from "./Faq";
 import Gallery from "./Gallery";
 import Hall from "./Hall";
+import Location from "./Location";
 import Rooms from "./Rooms";
 
 export function homeMetadata(lang: Locale): Metadata {
@@ -22,7 +23,6 @@ export function homeMetadata(lang: Locale): Metadata {
 
 export default function Home({ lang }: { lang: Locale }) {
   const t = dict(lang);
-  const nearby = business.distances.filter((d) => d.km != null);
   const offers = [
     {
       href: "#hall",
@@ -116,19 +116,15 @@ export default function Home({ lang }: { lang: Locale }) {
             >
               {t.common.seeHall}
             </a>
-            {business.mapsUrl && (
-              <a
-                href={business.mapsUrl}
-                target="_blank"
-                rel="noopener"
-                className="inline-flex items-center gap-2 rounded-md border border-gold-400/60 px-7 py-3 font-semibold text-gold-300 transition hover:bg-gold-400/10"
-              >
-                <svg viewBox="0 0 24 24" className="h-5 w-5 fill-current" aria-hidden="true">
-                  <path d="M12 2a7 7 0 0 0-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z" />
-                </svg>
-                {t.common.location}
-              </a>
-            )}
+            <a
+              href="#location"
+              className="inline-flex items-center gap-2 rounded-md border border-gold-400/60 px-7 py-3 font-semibold text-gold-300 transition hover:bg-gold-400/10"
+            >
+              <svg viewBox="0 0 24 24" className="h-5 w-5 fill-current" aria-hidden="true">
+                <path d="M12 2a7 7 0 0 0-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z" />
+              </svg>
+              {t.common.location}
+            </a>
           </div>
         </div>
       </section>
@@ -160,27 +156,13 @@ export default function Home({ lang }: { lang: Locale }) {
         </div>
       </Section>
 
-      {nearby.length > 0 && (
-        <Section title={t.home.nearTitle} intro={t.home.nearBody} alt>
-          <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            {nearby.map((d) => (
-              <li key={tx(d.place, "en")} className="rounded-lg border border-gold-500/25 bg-ink-950 p-5">
-                <p className="font-display text-3xl text-gold-300">
-                  {d.km} {t.common.km}
-                </p>
-                <p className="mt-1 text-gold-200/75">{tx(d.place, lang)}</p>
-              </li>
-            ))}
-          </ul>
-        </Section>
-      )}
-
       {/* Same order as the menu; each section carries the id the menu links to. */}
       <Hall lang={lang} />
       <Rooms lang={lang} />
       <Gallery lang={lang} />
       <About lang={lang} />
       <Faq lang={lang} />
+      <Location lang={lang} />
       <Contact lang={lang} />
     </main>
   );

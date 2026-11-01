@@ -25,8 +25,7 @@ const playfair = Playfair_Display({
 
 type NavItem = { href: string; label: string; external?: boolean };
 
-// Section links are plain anchors (they also work from the privacy page);
-// the map opens Google Maps in a new tab.
+// Section links are plain anchors, so they also work from the privacy page.
 function NavLink({ item, className }: { item: NavItem; className: string }) {
   return (
     <a href={item.href} className={className} {...(item.external && { target: "_blank", rel: "noopener" })}>
@@ -56,7 +55,7 @@ export default function SiteShell({
     { href: section("gallery"), label: t.nav.gallery },
     { href: section("about"), label: t.nav.about },
     { href: section("faq"), label: t.nav.faq },
-    ...(business.mapsUrl ? [{ href: business.mapsUrl, label: t.nav.location, external: true }] : []),
+    { href: section("location"), label: t.nav.location },
     { href: section("contact"), label: t.nav.contact },
   ];
   const social = Object.entries(business.social).filter(([, url]) => url);

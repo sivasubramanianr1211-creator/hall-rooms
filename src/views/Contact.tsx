@@ -1,4 +1,3 @@
-import ClickToLoad from "@/components/ClickToLoad";
 import { anyFilled, Facts, Missing, SectionIntro, Section, showMissing } from "@/components/ui";
 import { business, fullAddress } from "@/content/business";
 import { dict } from "@/lib/dictionary";
@@ -11,7 +10,6 @@ export default function Contact({ lang }: { lang: Locale }) {
   const t = dict(lang);
   const c = t.contact;
   const b = business;
-  const distances = b.distances.filter((d) => d.km != null || showMissing);
   const social = Object.entries(b.social).filter(([, url]) => url);
 
   return (
@@ -57,55 +55,6 @@ export default function Contact({ lang }: { lang: Locale }) {
             )}
           </div>
         )}
-      </Section>
-
-      <Section title={c.reach} alt>
-        <div className="grid gap-10 lg:grid-cols-2">
-          <div>
-            <ul className="divide-y divide-gold-500/15 border-y border-gold-500/15">
-              {distances.map((d) => (
-                <li key={tx(d.place, "en")} className="flex items-baseline justify-between gap-4 py-3">
-                  <span className="text-gold-200">{tx(d.place, lang)}</span>
-                  <span className="shrink-0 font-display text-lg text-gold-300">
-                    {d.km != null ? `${d.km} ${t.common.km}` : <Missing>distance</Missing>}
-                  </span>
-                </li>
-              ))}
-            </ul>
-            {b.landmarks.length > 0 ? (
-              <ul className="mt-6 space-y-1 text-gold-200/80">
-                {b.landmarks.map((l) => (
-                  <li key={tx(l, "en")}>· {tx(l, lang)}</li>
-                ))}
-              </ul>
-            ) : (
-              <p className="mt-6">
-                <Missing>nearby landmarks</Missing>
-              </p>
-            )}
-            {b.mapsUrl && (
-              <a
-                href={b.mapsUrl}
-                target="_blank"
-                rel="noopener"
-                className="mt-6 inline-block rounded-md border border-gold-400/60 px-5 py-2.5 font-semibold text-gold-300 transition hover:bg-gold-400/10"
-              >
-                {c.openMaps}
-              </a>
-            )}
-          </div>
-          <div>
-            {b.mapsEmbedUrl && (
-              <ClickToLoad
-                src={b.mapsEmbedUrl}
-                title={`${c.mapTitle}: ${tx(b.fullName, lang)}`}
-                label={t.common.showMap}
-                note={t.common.loadsFromGoogle}
-                className="h-80"
-              />
-            )}
-          </div>
-        </div>
       </Section>
 
       {(showMissing || social.length > 0 || anyFilled(b.googleBusinessUrl)) && (
